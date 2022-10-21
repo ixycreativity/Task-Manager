@@ -4,7 +4,10 @@ import "./TaskFilter.css";
 
 const FilterItem = (props) => {
   return (
-    <div className={`filter-item-container ${props.active && "active"}`}>
+    <div
+      onClick={props.onStatusClick}
+      className={`filter-item-container ${props.active && "active"}`}
+    >
       <p className={`filter-option ${props.active && "active"}`}>
         {props.label}
       </p>
