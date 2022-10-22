@@ -1,0 +1,13 @@
+.badge-tooltip {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background-color: #fff;
+  border: 1px solid #b9b9b9;
+  border-radius: 10px;
+}
+
+.tooltip-hidden {
+  display: none;
+  overflow: hidden;
+}
