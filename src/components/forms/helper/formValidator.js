@@ -15,7 +15,7 @@ export const validateForm = (taskName, dueDate, taskDetails) => {
   if (dueDate.length === 0) {
     dueDateErrorMessage = "This field is Required!";
     isFormValid = false;
-  } else if (new Date(dueDate).getTime() < new Date().getTime()) {
+  } else if (new Date(dueDate).getTime() <= new Date().getTime() - 86400000) {
     dueDateErrorMessage = "Task due time cannot be less than current date!";
     isFormValid = false;
   }

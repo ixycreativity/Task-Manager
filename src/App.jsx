@@ -58,7 +58,7 @@ function App() {
       {
         ...newTask,
         dueDate: new Date(newTask.dueDate),
-        id: "T-" + prevState.length + 1,
+        id: `T-${prevState.length + 1}`,
       },
     ]);
   };
