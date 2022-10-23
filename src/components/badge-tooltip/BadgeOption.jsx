@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const BadgeOption = (props) => {
-  const [isLabel, setIsLabel] = useState(props.status);
-
   const onStatusChange = () => {
     props.onStatusClick();
     props.changeTheLabel(props.status);

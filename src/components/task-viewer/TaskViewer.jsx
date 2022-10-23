@@ -10,7 +10,7 @@ const TaskViewer = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("All Tasks");
 
-  const displayedItems = props.taskList.filter((item) => {
+  let displayedItems = props.taskList.filter((item) => {
     if (selectedStatus === "All Tasks") {
       return true;
     }
@@ -37,6 +37,7 @@ const TaskViewer = (props) => {
                   status={item.status}
                   name={item.name}
                   dueDate={item.dueDate}
+                  onLabelChange={props.onLabelChange}
                 />
               ))}
             </div>

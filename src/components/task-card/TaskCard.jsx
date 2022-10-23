@@ -22,6 +22,14 @@ function TaskCard(props) {
     }
   };
 
+  useEffect(() => {
+    const changedTask = {
+      changedId: props.id,
+      changedStatus: isLabel,
+    };
+    props.onLabelChange(changedTask);
+  }, [isLabel]);
+
   return (
     <div className="card-wrapper">
       <div className="card-header">

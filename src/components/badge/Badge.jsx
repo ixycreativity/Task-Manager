@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import BadgeTooltip from "../badge-tooltip/BadgeTooltip";
-import { StatusContext } from "../task-viewer/TaskViewer";
-import { TodoContext } from "../../App";
 import "./Badge.css";
 
 const BADGE_COLORS = ["grey", "blue", "orange", "green", "black"];
@@ -9,9 +7,6 @@ const BADGE_COLORS = ["grey", "blue", "orange", "green", "black"];
 const Badge = (props) => {
   const { label, isTooltipOpen, setIsTooltipOpen, isLabel, setIsLabel } = props;
   const [isBadgeStyle, setIsBadgeStyle] = useState();
-
-  const todoItems = useContext(TodoContext);
-  const { selectedStatus, setSelectedStatus } = useContext(StatusContext);
 
   const openTooltip = () => {
     setIsTooltipOpen(true);
