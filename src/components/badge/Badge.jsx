@@ -1,27 +1,65 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import BadgeTooltip from "../badge-tooltip/BadgeTooltip";
+import { StatusContext } from "../task-viewer/TaskViewer";
+import { TodoContext } from "../../App";
 import "./Badge.css";
 
-const BADGE_COLORS = ["grey", "blue", "orange", "green"];
+const BADGE_COLORS = ["grey", "blue", "orange", "green", "black"];
 
 const Badge = (props) => {
-  const { label, isTooltipOpen, setIsTooltipOpen } = props;
+  const { label, isTooltipOpen, setIsTooltipOpen, isLabel, setIsLabel } = props;
+  const [isBadgeStyle, setIsBadgeStyle] = useState();
+
+  const todoItems = useContext(TodoContext);
+  const { selectedStatus, setSelectedStatus } = useContext(StatusContext);
 
   const openTooltip = () => {
     setIsTooltipOpen(true);
+  };
+
+  const getBadgeStyle = (label) => {
+    switch (label) {
+      case "Todo":
+        return "gri";
+      case "In Progress":
+        return "albastru";
+      case "Completed":
+        return "verde";
+      case "Pending":
+        return "portocaliu";
+      default:
+        return "grey";
+    }
+  };
+
+  const handleChangeLabel = (theLabel) => {
+    setIsLabel(theLabel);
+    setIsBadgeStyle(getBadgeStyle(theLabel));
+    console.log("Should update to this label: ", theLabel);
   };
 
   const closeTooltip = () => {
     setIsTooltipOpen(false);
   };
 
+  useEffect(() => {
+    console.log("now: ", isLabel);
+  }, [isLabel]);
+
   const badgeColor = BADGE_COLORS.includes(props.color) ? props.color : "grey";
   return (
     <>
-      <div className={`badge ${badgeColor}`} onClick={openTooltip}>
-        <p>{label}</p>
+      <div
+        className={`badge ${badgeColor} ${isBadgeStyle}`}
+        onClick={openTooltip}
+      >
+        <p>{isLabel}</p>
       </div>
-      <BadgeTooltip isTooltipOpen={isTooltipOpen} onClose={closeTooltip} />
+      <BadgeTooltip
+        isTooltipOpen={isTooltipOpen}
+        onClose={closeTooltip}
+        changeTheLabel={handleChangeLabel}
+      />
     </>
   );
 };

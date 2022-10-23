@@ -15,6 +15,7 @@ const taskFilterItems = [
 const TaskFilter = () => {
   const todoItems = useContext(TodoContext);
   const { selectedStatus, setSelectedStatus } = useContext(StatusContext);
+
   const getCountByStatus = (status) => {
     return todoItems.filter((item) => {
       if (status === "All Tasks") {
@@ -23,7 +24,7 @@ const TaskFilter = () => {
       return item.status === status;
     }).length;
   };
-  console.log(todoItems);
+
   return (
     <div className="filter-container">
       {taskFilterItems.map((item, index) => (

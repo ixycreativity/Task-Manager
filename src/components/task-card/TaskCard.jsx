@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "../badge/Badge";
 import DateContainer from "../date-container/DateContainer";
 import "./TaskCard.css";
 
 function TaskCard(props) {
-  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+  const [isTooltipOpen, setIsTooltipOpen] = useState();
+  const [isLabel, setIsLabel] = useState(props.status);
 
   const getBadgeStyle = () => {
     switch (props.status) {
@@ -30,6 +31,9 @@ function TaskCard(props) {
           color={getBadgeStyle()}
           isTooltipOpen={isTooltipOpen}
           setIsTooltipOpen={setIsTooltipOpen}
+          status={props.status}
+          isLabel={isLabel}
+          setIsLabel={setIsLabel}
         />
       </div>
       <div className="card-content">
