@@ -100,7 +100,7 @@ function App() {
     removeItem(changedTask.changedId);
     moveItem(changedTask.changedId, changedTask.changedStatus);
     console.log("task id in app: ", changedTask);
-    // orderList(taskList);
+    //orderList(taskList);
   };
 
   return (
