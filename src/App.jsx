@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { useState, createContext } from "react";
-=======
-import React, { useState, useEffect, createContext } from "react";
->>>>>>> update-filter-with-badge-change
 import TaskViewer from "./components/task-viewer/TaskViewer";
 import "./App.css";
 
@@ -111,15 +107,11 @@ function App() {
     <div className="app-container">
       <div className="app-content">
         <TodoContext.Provider value={taskList}>
-<<<<<<< HEAD
-          <TaskViewer onNewTaskAdd={onNewTaskAdd} taskList={taskList} />
-=======
           <TaskViewer
             onNewTaskAdd={onNewTaskAdd}
             taskList={taskList}
             onLabelChange={handleTaskChange}
           />
->>>>>>> update-filter-with-badge-change
         </TodoContext.Provider>
       </div>
     </div>
