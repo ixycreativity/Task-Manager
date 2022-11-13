@@ -10,7 +10,7 @@ const TaskViewer = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("All Tasks");
 
-  const displayedItems = props.taskList.filter((item) => {
+  let displayedItems = props.taskList.filter((item) => {
     if (selectedStatus === "All Tasks") {
       return true;
     }
@@ -26,25 +26,26 @@ const TaskViewer = (props) => {
           setIsOpen={setIsOpen}
           onNewTaskAdd={props.onNewTaskAdd}
         />
-      </StatusContext.Provider>
 
-      <div className="task-list-container">
-        {props.taskList.length > 0 ? (
-          <div className="task-list-grid">
-            {displayedItems.map((item) => (
-              <TaskCard
-                key={item.id}
-                id={item.id}
-                status={item.status}
-                name={item.name}
-                dueDate={item.dueDate}
-              />
-            ))}
-          </div>
-        ) : (
-          <EmptyListMessage onCreateTaskClick={setIsOpen} />
-        )}
-      </div>
+        <div className="task-list-container">
+          {props.taskList.length > 0 ? (
+            <div className="task-list-grid">
+              {displayedItems.map((item) => (
+                <TaskCard
+                  key={item.id}
+                  id={item.id}
+                  status={item.status}
+                  name={item.name}
+                  dueDate={item.dueDate}
+                  onLabelChange={props.onLabelChange}
+                />
+              ))}
+            </div>
+          ) : (
+            <EmptyListMessage onCreateTaskClick={setIsOpen} />
+          )}
+        </div>
+      </StatusContext.Provider>
     </div>
   );
 };

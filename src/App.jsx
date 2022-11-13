@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { useState, createContext } from "react";
+=======
+import React, { useState, useEffect, createContext } from "react";
+>>>>>>> update-filter-with-badge-change
 import TaskViewer from "./components/task-viewer/TaskViewer";
 import "./App.css";
 
@@ -58,16 +62,64 @@ function App() {
       {
         ...newTask,
         dueDate: new Date(newTask.dueDate),
-        id: "T-" + prevState.length + 1,
+        id: `T-${prevState.length + 1}`,
       },
     ]);
+  };
+
+  const removeItem = (removableId) => {
+    console.log("id to b removed as in App: ", removableId);
+    const shorterList = taskList.filter((item) => item.id !== removableId);
+    console.log(shorterList);
+    setTaskList(shorterList);
+  };
+
+  const moveItem = (movableId, movableStatus) => {
+    const changedList = taskList.filter((item) => item.id === movableId);
+    const itemToMove = {
+      key: movableId,
+      id: movableId,
+      name: changedList[0].name,
+      dueDate: changedList[0].dueDate,
+      taskDetails: changedList[0].taskDetails,
+      status: movableStatus,
+    };
+
+    console.log("movableStatus", movableStatus);
+
+    setTaskList((prevState) => [
+      ...prevState,
+      {
+        ...itemToMove,
+      },
+    ]);
+  };
+
+  const orderList = (list) => {
+    setTaskList(list);
+    console.log("orderedList: ", taskList);
+  };
+
+  const handleTaskChange = (changedTask) => {
+    removeItem(changedTask.changedId);
+    moveItem(changedTask.changedId, changedTask.changedStatus);
+    console.log("task id in app: ", changedTask);
+    //orderList(taskList);
   };
 
   return (
     <div className="app-container">
       <div className="app-content">
         <TodoContext.Provider value={taskList}>
+<<<<<<< HEAD
           <TaskViewer onNewTaskAdd={onNewTaskAdd} taskList={taskList} />
+=======
+          <TaskViewer
+            onNewTaskAdd={onNewTaskAdd}
+            taskList={taskList}
+            onLabelChange={handleTaskChange}
+          />
+>>>>>>> update-filter-with-badge-change
         </TodoContext.Provider>
       </div>
     </div>

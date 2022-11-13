@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import FilterItem from "./FilterItem";
 import { TodoContext } from "../../App";
 import { StatusContext } from "../task-viewer/TaskViewer";
@@ -17,6 +17,7 @@ const TaskFilter = () => {
   const { selectedStatus, setSelectedStatus } = useContext(StatusContext);
 
   const getCountByStatus = (status) => {
+    console.log("todoItems:", todoItems);
     return todoItems.filter((item) => {
       if (status === "All Tasks") {
         return true;
@@ -24,6 +25,14 @@ const TaskFilter = () => {
       return item.status === status;
     }).length;
   };
+
+  useEffect(
+    (status) => {
+      getCountByStatus(status);
+      console.log("TODO:", todoItems);
+    },
+    [todoItems]
+  );
 
   return (
     <div className="filter-container">

@@ -3,6 +3,7 @@
   padding: 5px 10px;
   border-radius: 12px;
   color: #808080;
+  cursor: pointer;
 }
 
 .badge p {
@@ -10,16 +11,6 @@
   font-size: 12px;
   line-height: 14px;
   color: inherit;
-}
-
-.grey {
-  background-color: #f2f2f2;
-  color: #808080;
-}
-
-.black {
-  background-color: #e2e2e2;
-  color: #16171d;
 }
 
 .blue {
@@ -35,4 +26,34 @@
 .green {
   background-color: #f0fff9;
   color: #00c271;
+}
+
+.grey {
+  background-color: #f2f2f2;
+  color: #808080;
+}
+
+.black {
+  background-color: #e2e2e2;
+  color: #16171d;
+}
+
+.albastru {
+  background-color: #f2f4fd;
+  color: #3754db;
+}
+
+.portocaliu {
+  background-color: #fffdf5;
+  color: #df9a00;
+}
+
+.verde {
+  background-color: #f0fff9;
+  color: #00c271;
+}
+
+.gri {
+  background-color: #f2f2f2;
+  color: #808080;
 }
